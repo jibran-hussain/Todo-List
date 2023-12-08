@@ -1,4 +1,4 @@
-const {insertData,listAllTodos}=require('../config/db.js')
+const {insertData,listAllTodos,deleteSingleTodo}=require('../models/todomodel.js')
 
 
 const createTodo= async(req,res)=>{
@@ -23,5 +23,15 @@ const listTodo=async (req,res)=>{
     }
 }
 
-module.exports={createTodo,listTodo}
+const deleteTodo=async (req,res)=>{
+    try{
+        const todoDescription=req.body.todo;
+        await deleteSingleTodo(todoDescription);
+        res.json({message:"This todo has been deleted successfully"});
+    }catch(error){
+        console.log(error);
+    }
+}
+
+module.exports={createTodo,listTodo,deleteTodo}
 
