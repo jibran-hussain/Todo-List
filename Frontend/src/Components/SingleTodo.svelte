@@ -10,6 +10,7 @@
         disptach('toParentForDeletion',{
             todoToDelete:description
         })
+
     }
 
 </script>

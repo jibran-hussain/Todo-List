@@ -2,13 +2,12 @@ const pool=require('../config/db')
 
 const executeQuery=async ()=>{
     try{
-        const createQuery=`CREATE TABLE TODOLIST(Description Varchar(1000))`;
+        const createQuery=`CREATE TABLE TODOLIST(id SERIAL PRIMARY KEY ,Description Varchar(1000))`;
         await pool.query(createQuery);
         console.log('done successfully')
         pool.end();
     }catch(error){
         console.log(error)
-        pool.end()
     }
 }
 // executeQuery()
