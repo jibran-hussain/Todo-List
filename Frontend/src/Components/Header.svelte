@@ -7,6 +7,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: red;    
+        background-color:#504099;
+        padding: 1em; 
+        margin-bottom: 2em; 
     }
 </style>
