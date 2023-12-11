@@ -1,12 +1,13 @@
 <script>
+  import '../global.css'
 	import axios from "axios";
 	import Header from "../Components/Header.svelte";
-	import ListTodos from "../Components/listTodos.svelte";
+  import ListTodos from "../Components/ListTodos.svelte";
 	import Button from "../Components/CreateTask/Button.svelte";
-    import CreateTaskInput from "../Components/CreateTask/CreateTaskInput.svelte";
+  import CreateTaskInput from "../Components/CreateTask/CreateTaskInput.svelte";
 	export let data;	
 	let todo;
-    let refreshTodos=false;
+  let refreshTodos=false;
 
 	const getTodos=async()=>{
   try{
@@ -60,6 +61,31 @@ const deleteTodo=async (event)=>{
 </script>
 
 <Header />
-<CreateTaskInput on:taskInput={(event)=>todo=event.detail.text}/>
-<Button text="Submit"  handleOnClick={addTodoHandler} />
-<ListTodos on:toParentForDeletion={deleteTodo} {refreshTodos} {data} />
+
+<div class="todo-container">
+    <div class="create-todo">
+      <CreateTaskInput on:taskInput={(event)=>todo=event.detail.text} />
+      <Button text="Submit"  handleOnClick={addTodoHandler} />
+    </div>
+    <div class="list-todos">
+       <ListTodos on:toParentForDeletion={deleteTodo}  {refreshTodos} {data}  />
+    </div>
+</div>
+
+
+<style>
+  .todo-container{
+      
+  }
+  .create-todo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .list-todos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style> 
